@@ -1,0 +1,52 @@
+<div class="container">
+
+  <div class="display-4 text-center">Cadastro de Cidade</div>
+
+  <form [formGroup]="formGroupCidade">
+    <div class="mb-3">
+      <label for="inputName" class="form-label">Nome</label>
+      <input formControlName="name" type="text" class="form-control" id="inputName">
+    </div>
+
+    <div class="mb-3">
+      <label for="inputDescription" class="form-label">Descrição</label>
+      <input formControlName="description" type="text" class="form-control" id="inputDescription">
+    </div>
+
+    <div class="mb-3">
+      <label for="inputPopulation" class="form-label">População</label>
+      <input formControlName="population" type="number" class="form-control" id="inputPopulation">
+    </div>
+
+    <div class="mb-3">
+      <label for="inputArea" class="form-label">Área (km²)</label>
+      <input formControlName="area" type="number" step="0.01" class="form-control" id="inputArea">
+    </div>
+
+    <div class="mb-3">
+      <label for="inputEstado" class="form-label">Estado</label>
+      <input formControlName="estado" type="text" class="form-control" id="inputEstado">
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="save()"> Salvar</button>
+  </form>
+
+  <p class="mt-4">Total de cidades: {{cidades.length}}</p>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let c of cidades">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{c.name}}</h5>
+          <p class="card-text">{{c.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>População:</strong> {{c.population | number:'1.0-0':'pt-BR'}}</li>
+          <li class="list-group-item"><strong>Área:</strong> {{c.area | number:'1.0-2':'pt-BR'}} km²</li>
+          <li class="list-group-item"><strong>Estado:</strong> {{c.estado}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
